@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wifi Watch</string>
+    <string name="menu_settings">Impostazioni</string>
+    <string name="menu_history">Registro connessioni</string>
+    <string name="title_activity_pop_up">Cos\'é questo?</string>
+    <string name="title_activity_settings">Impostazioni app</string>
+    <string name="title_activity_connections_history">Registro connessioni</string>
+
+    <!-- Preferences  -->
+    <string name="pref_timeout_to_ping_title">Limite di tempo per la rispota del dispositivo</string>
+    <string name="pref_timeout_to_ping_summary">Maggiore é l\'intervallo, maggior precisione avrá il tisultato della ricerca (ma sará anche piú lento).\n\nAttualmente: %1$s</string>
+    <string name="pref_time_between_checking_title">Limite di tempo fra i controlli automatici</string>
+    <string name="pref_auto_connection_check_title">Controllo automatico connessione</string>
+    <string name="pref_auto_connection_check_summary">Dopo una ricerca, attualizzare periodicamente lo stato della connessione dei dispositivi incontrati</string>
+    <string name="pref_show_notifications_check_title">Mostra notifica</string>
+	<string name="pref_show_notifications_check_summary">Mostra notifica nell\'area di notifica quando nuova connessione rilevata dopo una ricerca</string>
+    
+    <!-- Image descriptions -->
+    <string name="connected_image_desc">Connesso</string>
+        
+    <!-- Messages -->
+    <string name="loading_wifi_data">CARICANDO DATI WIFI&#8230;</string>
+    <string name="no_connected_to_wifi">NON CONNESSO A NESSUNA WIFI</string>
+    <string name="start_search">INIZIA</string>
+    <string name="show_not_connected">Mostrare non connessi</string>
+    <string name="show_not_connected_explain">(Mostra dispositivi non connessi attualmente ma recentemente connessi al tuo router)</string>
+    <string name="scanning_lan">Analizzando LAN&#8230;</string>
+    <string name="clean_results">Cancella i risultati</string>
+    <string name="this_is_your_device">Questo é il tuo dispositivo</string>
+    <string name="your_device_more_text">Lo puoi comprovare nelle Impostazioni di rete del tuo dispositivo.\n Segui questo link per sapere come:</string>
+    <string name="find_your_ip_url">http://www.riverdevs.com/find-your-device-ip</string>
+    <string name="this_is_your_gateway">Questo é il tuo gateway</string>
+    <string name="your_gateway_explanation_text">Il gateway é il dispositivo, parte della tua rete, che ti consente connettarti con Internet</string>
+    <string name="your_gateway_more_text">Normalmente si tratta del tuo router</string>
+    <string name="this_is_unknown_ip">Questa é una IP sconosciuta</string>
+    <string name="unknown_explanation_text">Questo può essere qualcuno che conosci o qualcuno che non conosci.\n\nSe non riconosci il nome del dispositivo (o é sconosciuto), puoi controllare le IP di tutti i tuoi dispositivi (computers, cellulari, consoles&#8230;) per scoprire quale corrispondono con questa IP. Segui questo link per sapere come:</string>
+    <string name="unknown_explanation_more_text">Nel caso in cui non sia capace di incontrarea che dispositivo appartiene la IP, dovresti controllare le impostazioni di sicurezza del tuo router</string>
+    <string name="configuring_app_title">Configurare l\'applicazione per la prima volta</string>
+    <string name="configuring_app_text">Si prega di attendere finché l\'applicazione sia configurata per la prima volta</string>
+    <string name="delete_all_entries">Cancella</string>
+    <string name="no_detected_connections_found">Nessuna connessione</string>
+    <string name="this_is_known_device">Questa é una IP conosciuta</string>
+    <string name="you_identified_with_name">Avete identificato questo dispositivo come \"%1$s\"</string>
+    
+    <!-- Labels -->
+    <string name="close_button">Chiudere</string>
+    <string name="connected">connesso</string>
+    <string name="disconnected">sconnesso</string>
+    <string name="unknown">Sconosciuto</string>
+    <string name="my_name">Il mio nombre:</string>
+    <string name="my_ip">La mia IP:</string>
+    <string name="gateway">Gateway:</string>
+    <string name="my_mac">La mia MAC:</string>
+    <string name="search_finished">Ricerca terminata</string>
+    <string name="edit_device_name">Modificare il nome del dispositivo</string>
+    <string name="ok">SI</string>
+    <string name="cancel">Cancellare</string>
+    <string name="manufacturer">Produttore</string>
+    <string name="check_connection_history">Registro connessioni</string>
+    <string name="remove_all_message">Eliminare tutti i risultati?</string>
+    <string name="checking_new_connections">Verifica di nuove connessioni&#8230;</string>
+    <string name="connection_detected">Connessione rilevata: </string>
+    <string name="connection_checking_stopped">Controllo di connessioni interrotto</string>
+    
+    <!-- Errors -->
+    <string name="error_no_connected_title">Nessuna Wifi connessa</string>
+    <string name="error_no_connected_text">Non connesso a nessuna Wifi.\nDevi essere connesso a una Wifi per cercare.</string>
+	<string name="error_no_mac_address_edit_name">É necessario un indirizzo MAC per asseñare un nome</string>
+    
+    <string name="preEula">Per favore accetta la seguente EULA per usare questo software:</string>
+    <string name="updates">1.21: Cambio del nome dell\'app\n</string>
+</resources>

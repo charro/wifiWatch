@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <string-array name="pref_timeout_to_ping_entries">
+        <item name="1">Court (50ms)</item>
+        <item name="2">Standard (150ms)</item>
+        <item name="3">Long (300ms)</item>
+        <item name="4">Très long (600ms)</item>
+    </string-array>
+    
+    <string-array name="pref_time_between_checking_entries">
+        <item name="1">Court (1s)</item>
+        <item name="2">Standard (5s)</item>
+        <item name="3">Long (20s)</item>
+        <item name="4">Très long (60s)</item>
+    </string-array>
+    
+</resources>

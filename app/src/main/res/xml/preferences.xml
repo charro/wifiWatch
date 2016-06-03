@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <ListPreference 
+        android:key="pref_timeout_to_ping"
+        android:title="@string/pref_timeout_to_ping_title"
+        android:dialogTitle="@string/pref_timeout_to_ping_title"
+        android:defaultValue="50"
+        android:entries="@array/pref_timeout_to_ping_entries"
+        android:entryValues="@array/pref_timeout_to_ping_values" />
+
+    <CheckBoxPreference 
+        android:key="pref_auto_connection_check"
+        android:title="@string/pref_auto_connection_check_title"
+        android:defaultValue="true"
+        android:summary="@string/pref_auto_connection_check_summary"/>
+
+    <ListPreference 
+        android:key="pref_time_between_checking"
+        android:title="@string/pref_time_between_checking_title"
+        android:dialogTitle="@string/pref_time_between_checking_title"
+        android:defaultValue="5000"
+        android:entries="@array/pref_time_between_checking_entries"
+        android:entryValues="@array/pref_time_between_checking_values" />
+        
+    <CheckBoxPreference
+        android:key="pref_show_notifications_check"
+        android:title="@string/pref_show_notifications_check_title"
+        android:defaultValue="true"
+        android:summary="@string/pref_show_notifications_check_summary"/>
+        
+</PreferenceScreen>

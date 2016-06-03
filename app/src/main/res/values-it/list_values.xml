@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string-array name="pref_timeout_to_ping_values">
+        <item name="1">50</item>
+        <item name="2">150</item>
+        <item name="3">300</item>
+        <item name="4">600</item>
+    </string-array>
+    
+    <string-array name="pref_timeout_to_ping_entries">
+        <item name="1">Corto (50ms)</item>
+        <item name="2">Standard (150ms)</item>
+        <item name="3">Lungo (300ms)</item>
+        <item name="4">Molto lungo (600ms)</item>
+    </string-array>
+
+    <string-array name="pref_time_between_checking_values">
+        <item name="1">1000</item>
+        <item name="2">5000</item>
+        <item name="3">20000</item>
+        <item name="4">60000</item>
+    </string-array>
+    
+    <string-array name="pref_time_between_checking_entries">
+        <item name="1">Corto (1s)</item>
+        <item name="2">Standard (5s)</item>
+        <item name="3">Lungo (20s)</item>
+        <item name="4">Molto lungo (60s)</item>
+    </string-array>
+    
+</resources>

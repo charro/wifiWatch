@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wifi Watch</string>
+    <string name="menu_settings">Configuración</string>
+    <string name="menu_history">Registro de Conexiones Detectadas</string>
+    <string name="title_activity_pop_up">Quién es?</string>
+    <string name="title_activity_settings">Configuración de la aplicación</string>
+    <string name="title_activity_connections_history">Registro de Conexiones Detectadas</string>
+
+    <!-- Preferences  -->
+    <string name="pref_timeout_to_ping_title">Tiempo de espera por la respuesta de un dispositivo</string>
+    <string name="pref_timeout_to_ping_summary">Cuanto más largo, más fiable será la búsqueda, pero también más lenta.\n\nActualmente esperando: %1$s</string>
+    <string name="pref_time_between_checking_title">Tiempo de espera entre auto-comprobaciones</string>
+    <string name="pref_auto_connection_check_title">Auto comprobar conectados</string>
+    <string name="pref_auto_connection_check_summary">Después de la búsqueda, comprobar automáticamente la conexión de los dispositivos detectados y buscar nuevos dispositivos</string>
+   	<string name="pref_show_notifications_check_title">Mostrar Notificaciones</string>
+	<string name="pref_show_notifications_check_summary">Mostrar notificaciones en el área de notificaciones cuando un nuevo dispositivo es detectado después de una búsqueda</string>
+
+    <!-- Image descriptions -->
+    <string name="connected_image_desc">Conectado</string>
+        
+    <!-- Messages -->
+    <string name="loading_wifi_data">Cargando datos de la red Wifi&#8230;</string>
+    <string name="no_connected_to_wifi">No conectado a ninguna Wifi</string>
+    <string name="start_search">COMENZAR</string>
+    <string name="show_not_connected">Mostrar los no conectados</string>
+    <string name="show_not_connected_explain">(Muestra dispositivos que han accedido al router recientemente, aunque no estén conectados actualmente)</string>
+    <string name="scanning_lan">Escaneando la red local&#8230;</string>
+    <string name="clean_results">Limpiar resultados</string>
+    <string name="this_is_your_device">Este es tu dispositivo</string>
+    <string name="your_device_more_text">Puedes comprobar la IP en la configuración de red de tu dispositivo.\n Sigue el siguiente enlace para saber cómo:</string>
+    <string name="find_your_ip_url">http://www.riverdevs.com/encuentra-tu-ip</string>
+    <string name="this_is_your_gateway">Este es tu gateway</string>
+    <string name="your_gateway_explanation_text">El gateway es el dispositivo, parte de tu red local, que te conecta con Internet</string>
+    <string name="your_gateway_more_text">Normalmente se trata de tu router</string>
+    <string name="this_is_unknown_ip">Esta es una IP desconocida</string>
+    <string name="unknown_explanation_text">Puede ser alguien que conozcas o alguien que no.\n\nSi no reconoces el nombre del dispositivo (o es Desconocido), deberías comprobar las IPs de tus dispositivos conectados (ordenadores, móviles, consolas&#8230;) para chequear cuál corresponde a esta IP. Sigue este enlace para saber cómo:</string>
+    <string name="unknown_explanation_more_text">Si no puedes encontrar a qué dispositivo corresponde esta IP, deberías comprobar la seguridad Wifi en tu router</string>
+	<string name="configuring_app_title">Configurando la aplicación</string>
+    <string name="configuring_app_text">Por favor espere mientras la aplicación se configura por primera vez</string>
+    <string name="delete_all_entries">Eliminar todo</string>
+    <string name="no_detected_connections_found">Ninguna conexión detectada aún</string>
+    <string name="this_is_known_device">Este es un dispositivo conocido</string>
+    <string name="you_identified_with_name">Identificaste este dispositivo como \"%1$s\"</string>
+    
+    <!-- Labels -->
+    <string name="close_button">Cerrar</string>
+    <string name="connected">conectado</string>
+    <string name="disconnected">desconectado</string>
+    <string name="unknown">Desconocido</string>
+    <string name="my_name">Mi nombre:</string>
+    <string name="my_ip">Mi IP:</string>
+    <string name="gateway">Gateway:</string>
+    <string name="my_mac">Mi MAC:</string>
+    <string name="search_finished">Búsqueda finalizada\nRecuerda que puedes asignar un nombre a cada dispositivo presionando unos segundos sobre el mismo</string>
+    <string name="edit_device_name">Editar nombre del dispositivo</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+    <string name="manufacturer">Fabricante</string>
+    <string name="check_connection_history">Comprobar registro de conexiones</string>
+    <string name="remove_all_message">Eliminar el registro por completo?</string>
+    <string name="checking_new_connections">Buscando nuevas conexiones&#8230;</string>
+    <string name="connection_detected">Conexión detectada: </string>
+    <string name="connection_checking_stopped">Connection checking service stopped</string>
+    
+    <!-- Errors -->
+    <string name="error_no_connected_title">No hay conexión Wifi</string>
+    <string name="error_no_connected_text">No estás conectado a ninguna Wifi.\nDebes estar conectado a alguna red para buscar en ella.</string>
+	<string name="error_no_mac_address_edit_name">Se necesita una dirección MAC para asignar un nombre</string>
+
+</resources>

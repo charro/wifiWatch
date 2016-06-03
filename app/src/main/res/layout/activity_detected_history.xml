@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:orientation="vertical" >
+    
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-7348866844562014/5306510085" />
+    
+    <ListView
+        android:id="@+id/connectedHistoryList"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp" 
+        android:layout_weight="0.9"/>
+    
+    <TextView
+        android:id="@+id/noDetectedConnectionsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="@string/no_detected_connections_found"
+        android:visibility="gone"/>
+    
+    <TextView
+        android:id="@+id/deleteAllEntriesView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/blue_background_clickable"
+        android:clickable="true"
+        android:drawableLeft="@drawable/clean"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="@string/delete_all_entries"/>
+</LinearLayout>
