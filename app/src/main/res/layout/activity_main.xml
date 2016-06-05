@@ -8,40 +8,36 @@
 
     <!-- WIFI DATA CONTAINER -->
 
+    <!-- MAIN WIFI INFO -->
     <LinearLayout
         android:id="@+id/myConnectionContainerLayout"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_margin="10dp"
         android:background="@drawable/container_rectangle"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="10dp" >
 
+        <!-- android:drawableTop="@drawable/wifi_router_disconnected" THE IMAGE -->
         <TextView
             android:id="@+id/networkNameTextView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:textSize="12sp"
-            android:drawableTop="@drawable/wifi_router_disconnected"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:gravity="center"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:text="NETWORK NAME"
+            android:textColor="@color/main_text_color" />
 
-        <View
-            android:layout_width="0.5dp"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:padding="5dp"
-            android:background="@android:color/black" />
-
+        <!-- SHOWN WHILE CONNECTING TO THE WIFI -->
         <LinearLayout
             android:id="@+id/loadingWifiData"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.3"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <ProgressBar
                 android:id="@+id/loadingWifiDataProgressBar"
@@ -54,22 +50,28 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/loading_wifi_data" />
+                android:text="@string/loading_wifi_data"
+                android:textColor="@color/main_text_color" />
         </LinearLayout>
 
+        <!-- SHOWN WIFI DATA IF CONNECTED TO SOME WIFI -->
         <LinearLayout
             android:id="@+id/myAddressesDataContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_weight="0.3"
             android:orientation="vertical"
-            android:visibility="gone" >
+>
 
             <TextView
                 android:id="@+id/myHostnameTextView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:gravity="center"
+                android:text="MY HOSTNAME"
+                android:textColor="@color/main_text_color"
                 android:layout_weight="1" />
 
             <TextView
@@ -77,6 +79,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:gravity="center"
+                android:text="MY IP ADDRESS"
+                android:textColor="@color/main_text_color"
                 android:layout_weight="1" />
 
             <TextView
@@ -84,16 +89,23 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:gravity="center"
+                android:text="MY GATEWAY"
+                android:textColor="@color/main_text_color"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/myMACTextView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:text="MY MAC ADDRESS"
+                android:textColor="@color/main_text_color"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:layout_weight="1" />
         </LinearLayout>
 
+        <!-- SHOWN WHEN NOT CONNECTED TO ANY WIFI -->
         <LinearLayout
             android:id="@+id/noConnectedContainer"
             android:layout_width="match_parent"
@@ -101,12 +113,14 @@
             android:layout_weight="0.3"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/noConnectedTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/main_text_color"
                 android:text="@string/no_connected_to_wifi" />
         </LinearLayout>
     </LinearLayout>
@@ -119,50 +133,36 @@
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-7348866844562014/5306510085" />
 
-    <!-- SEARCH CONTAINER -->
-
+    <!-- INSTRUCTIONS WHEN SEARCH IS EMPTY -->
     <LinearLayout
-        android:id="@+id/searchContainerLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:id="@+id/instructionsContainerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
+        android:layout_weight="0.5"
         android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone" >
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/startSearchContainerLayout"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:textStyle="bold"
+            android:textColor="@color/quite_dark_text_color"
+            android:text="NO SEARCH FINISHED YET \n\n PLEASE TAP BELOW BUTTON TO START A NEW SEARCH"/>
 
-            <TextView
-                android:id="@+id/startSearchButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/transparent_background_clickable"
-                android:clickable="true"
-                android:drawableTop="@drawable/refresh"
-                android:gravity="center"
-                android:text="@string/start_search"
-                android:textStyle="bold" />
+    </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/searchNotConnectedCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/show_not_connected" />
-
-            <TextView
-                android:id="@+id/explainTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/show_not_connected_explain"
-                android:textSize="12sp" />
-        </LinearLayout>
+    <!-- SEARCH CONTAINER -->
+    <LinearLayout
+        android:id="@+id/searchContainerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <!-- RESULTS INSIDE THIS LAYOUT -->
 
@@ -171,17 +171,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/searchProgressContainerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="5dp" >
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -191,14 +191,17 @@
 
                     <TextView
                         android:id="@+id/searchingTextView"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/main_dark_text_color"
+                        android:textStyle="bold"
                         android:text="@string/scanning_lan" />
 
                     <ProgressBar
                         android:id="@+id/lookUpProgressBar"
                         style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
@@ -209,7 +212,8 @@
                     android:layout_gravity="center_horizontal|bottom"
                     android:background="@drawable/transparent_background_clickable"
                     android:clickable="true"
-                    android:src="@drawable/red_cancel" />
+                    android:src="@drawable/red_cancel"
+                    android:visibility="gone"/>
             </LinearLayout>
            
             <TextView
@@ -237,6 +241,47 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" />
         </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- USER INTERFACE - BUTTONS HERE-->
+    <LinearLayout
+        android:id="@+id/startSearchContainerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- android:drawableTop="@drawable/refresh" -->
+        <Button
+            android:id="@+id/startSearchButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:background="@color/darkest_color"
+            android:textStyle="bold"
+            android:textColor="@color/main_text_color"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/start_search" />
+
+        <CheckBox
+            android:id="@+id/searchNotConnectedCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/show_not_connected"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/explainTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/show_not_connected_explain"
+            android:textSize="12sp"
+            android:visibility="gone"/>
     </LinearLayout>
 
 </LinearLayout>

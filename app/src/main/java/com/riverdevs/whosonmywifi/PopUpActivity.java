@@ -29,14 +29,17 @@ public class PopUpActivity extends Activity {
 		String selectedHostname = getIntent().getStringExtra("selectedHostname");
 		String selectedMac = getIntent().getStringExtra("selectedMac");
 		String selectedGivenName = getIntent().getStringExtra("selectedGivenName");
+		String selectedManufacturer = getIntent().getStringExtra("selectedManufacturer");
 		
 		TextView selectedIPTextView = (TextView) findViewById(R.id.selectedIPText);
 		TextView selectedHostnameTextView = (TextView) findViewById(R.id.selectedHostnameText);
 		TextView selectedMacText = (TextView) findViewById(R.id.selectedMacText);
+		TextView selectedManufacturerText = (TextView) findViewById(R.id.selectedManufacturer);
 		
 		selectedIPTextView.setText(selectedIP);
 		selectedHostnameTextView.setText( (TextUtils.isEmpty(selectedHostname) ? getString(R.string.unknown) : selectedHostname) );
 		selectedMacText.setText( (TextUtils.isEmpty(selectedMac) ? getString(R.string.unknown) : selectedMac) );
+		selectedManufacturerText.setText( (TextUtils.isEmpty(selectedManufacturer) ? getString(R.string.unknown) : selectedManufacturer) );
 		
 		if(myIP.equals(selectedIP)){
 			findViewById(R.id.yourIPLayout).setVisibility(View.VISIBLE);

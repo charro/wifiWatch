@@ -5,7 +5,7 @@
     <gradient
         android:gradientRadius="350"
         android:type="radial"
-        android:startColor="@color/light_blue"
+        android:startColor="@color/main_color"
         android:endColor="@color/whitegrey"/>
 
     <corners

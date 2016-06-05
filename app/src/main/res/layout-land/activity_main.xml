@@ -16,13 +16,13 @@
         android:orientation="vertical"
         android:padding="10dp" >
 
+		<!-- android:drawableTop="@drawable/wifi_router_disconnected" -->
         <TextView
         	android:id="@+id/networkNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-			android:gravity="center"
-			android:drawableTop="@drawable/wifi_router_disconnected" />
+			android:gravity="center"/>
 
         <View
 	     android:layout_width="fill_parent"

@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     	<color name="transparent">#00FFFFFF</color>
-    	<color name="whitegrey">#FFF2F2F2</color>
-		<color name="white">#FFFFFF</color>
+    	<color name="whitegrey">#f2f2f2</color>
+		<color name="white">#ffffff</color>
 		<color name="black">#000000</color>
 		<color name="light_blue">#c0edf8</color>
 		<color name="app_blue">#04aeda</color>
+
+		<!-- New Design Palette -->
+		<color name="main_color">#2196F3</color>
+		<color name="darkest_color">#0D47A1</color>
+		<color name="lighter_color">#E3F2FD</color>
+
+        <!-- Text colors -->
+        <color name="main_text_color">#ffffff</color>
+        <color name="main_dark_text_color">#0D47A1</color>
+	    <color name="quite_dark_text_color">#1976D2</color>
+		<color name="main_opposite_text_color">#2196F3</color>
+
 </resources>

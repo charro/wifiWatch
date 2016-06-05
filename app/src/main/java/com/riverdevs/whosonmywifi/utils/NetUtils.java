@@ -148,7 +148,7 @@ public class NetUtils extends BaseNetUtils{
 		connectionInfo.setMyIp(ipString);
 		connectionInfo.setGatewayIp(gatewayIpString);
 		connectionInfo.setSubnetMask(networkMaskString);
-		connectionInfo.setWifiName(wifiInfo.getSSID());
+		connectionInfo.setWifiName(wifiInfo.getSSID().replace("\"", ""));
 		connectionInfo.setMac(wifiInfo.getMacAddress());
 		connectionInfo.setNetworkId(wifiInfo.getNetworkId());
 		try{

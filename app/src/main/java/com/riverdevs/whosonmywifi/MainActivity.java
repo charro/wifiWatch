@@ -186,6 +186,7 @@ public class MainActivity extends Activity {
 				intent.putExtra("selectedHostname", item.getHostname());
 				intent.putExtra("selectedMac", item.getMacAddress());
 				intent.putExtra("selectedGivenName", item.getGivenName());
+				intent.putExtra("selectedManufacturer", item.getManufacturer());
 				
 				startActivity(intent);
 			}
@@ -208,9 +209,10 @@ public class MainActivity extends Activity {
 				if (NetUtils.isWifiConnected(MainActivity.this)) {
 					progressBar.setProgress(0);
 					findViewById(R.id.searchResultLayout).setVisibility(View.VISIBLE);
-					findViewById(R.id.startSearchContainerLayout).setVisibility(View.GONE);
+					//findViewById(R.id.startSearchContainerLayout).setVisibility(View.GONE);
 					findViewById(R.id.refreshResultsView).setVisibility(View.GONE);
 					findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);
+                    findViewById(R.id.instructionsContainerLayout).setVisibility(View.GONE);
 					
 					setConnectedDevicesAdapter(new FoundDevicesAdapter(MainActivity.this));
 					connectedDeviceList.setAdapter(getConnectedDevicesAdapter());
@@ -289,7 +291,7 @@ public class MainActivity extends Activity {
 			// Set saved search data from last Activity
 			if(info.getListAdapter() != null){
 				findViewById(R.id.searchResultLayout).setVisibility(View.VISIBLE);
-				findViewById(R.id.startSearchContainerLayout).setVisibility(View.GONE);
+				//findViewById(R.id.startSearchContainerLayout).setVisibility(View.GONE);
 				
 				setConnectedDevicesAdapter(info.getListAdapter());
 				connectedDeviceList.setAdapter(getConnectedDevicesAdapter());
@@ -307,7 +309,7 @@ public class MainActivity extends Activity {
 						findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);	
 					}
 					else{
-						findViewById(R.id.refreshResultsView).setVisibility(View.VISIBLE);
+						//findViewById(R.id.refreshResultsView).setVisibility(View.VISIBLE);
 						findViewById(R.id.searchProgressContainerLayout).setVisibility(View.GONE);
 					}			
 				}
@@ -524,8 +526,8 @@ public class MainActivity extends Activity {
 		findViewById(R.id.myAddressesDataContainer).setVisibility(View.GONE);
 		findViewById(R.id.noConnectedContainer).setVisibility(View.VISIBLE);
 		
-		networkNameTextView.setCompoundDrawablesWithIntrinsicBounds(
-				0, R.drawable.wifi_router_disconnected, 0, 0);
+//		networkNameTextView.setCompoundDrawablesWithIntrinsicBounds(
+//				0, R.drawable.wifi_router_disconnected, 0, 0);
 		networkNameTextView.setText("");
 	}
 	
@@ -534,8 +536,8 @@ public class MainActivity extends Activity {
 		findViewById(R.id.myAddressesDataContainer).setVisibility(View.GONE);
 		findViewById(R.id.noConnectedContainer).setVisibility(View.GONE);
 		
-		networkNameTextView.setCompoundDrawablesWithIntrinsicBounds(
-				0, R.drawable.wifi_router, 0, 0);
+//		networkNameTextView.setCompoundDrawablesWithIntrinsicBounds(
+//				0, R.drawable.wifi_router, 0, 0);
 	}
 	
 	private void cleanAndShowStartSearchLayout(){
@@ -603,7 +605,7 @@ public class MainActivity extends Activity {
 		Toast.makeText(this, getString(R.string.search_finished), Toast.LENGTH_LONG).show();
 		progressBar.setProgress(100);
 		findViewById(R.id.searchProgressContainerLayout).setVisibility(View.GONE);
-		findViewById(R.id.refreshResultsView).setVisibility(View.VISIBLE);
+		//findViewById(R.id.refreshResultsView).setVisibility(View.VISIBLE);
 		
 		if(!cancelled){
 			// Start automatic monitoring of devices
