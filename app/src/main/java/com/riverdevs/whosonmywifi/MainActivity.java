@@ -174,7 +174,11 @@ public class MainActivity extends Activity {
 		fadeInFadeOutInfiniteLoopAnimation = AnimationUtils.loadAnimation(this, R.animator.fade_in_fade_out);
 		fadeInFadeOutInfiniteLoopAnimation.setRepeatCount(-1);
 		fadeInFadeOutInfiniteLoopAnimation.setRepeatMode(2);
-		
+
+		ImageView downArrowImageView = (ImageView) findViewById(R.id.arrowDown);
+		Animation upDownAnimation = AnimationUtils.loadAnimation(this, R.animator.down_up_down);
+		downArrowImageView.startAnimation(upDownAnimation);
+
 		connectedDeviceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -207,6 +211,8 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				stopMonitorService();
+
 				if (NetUtils.isWifiConnected(MainActivity.this)) {
 
 					// If there is a search ongoing, cancel it now
@@ -230,6 +236,7 @@ public class MainActivity extends Activity {
 						pingTask =
 								(PingTask) (new PingTask(MainActivity.this)).execute(searchNotConnected.isChecked());
 
+						/*
 						ImageView cancelSearchButton = (ImageView) findViewById(R.id.cancelSearchImage);
 						cancelSearchButton.setOnClickListener(new View.OnClickListener() {
 
@@ -240,6 +247,8 @@ public class MainActivity extends Activity {
 								endSearch(true);
 							}
 						});
+						*/
+						startSearch.setText(getResources().getText(R.string.cancel));
 					}
 				}
 				else{
@@ -323,6 +332,7 @@ public class MainActivity extends Activity {
 					if(info.getExecutingPingTask().getStatus() == Status.RUNNING){
 						findViewById(R.id.refreshResultsView).setVisibility(View.GONE);
 						findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);
+						startSearch.setText(getResources().getText(R.string.cancel));
 					}
 					else{
 						//findViewById(R.id.refreshResultsView).setVisibility(View.VISIBLE);
@@ -627,6 +637,8 @@ public class MainActivity extends Activity {
 			// Start automatic monitoring of devices
 			startMonitorService();	
 		}
+
+		startSearch.setText(getResources().getText(R.string.start_search));
 	}
 	
 	@Override

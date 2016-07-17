@@ -43,6 +43,7 @@
     <string name="no_detected_connections_found">Nessuna connessione</string>
     <string name="this_is_known_device">Questa é una IP conosciuta</string>
     <string name="you_identified_with_name">Avete identificato questo dispositivo come \"%1$s\"</string>
+    <string name="not_search_finished_yet">NESSUNA RICERCA FINITA \n\n TOCCARE IL PULSANTE PER AVVIARE UNA NUOVA RICERCA</string>
     
     <!-- Labels -->
     <string name="close_button">Chiudere</string>

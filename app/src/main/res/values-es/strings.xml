@@ -43,6 +43,7 @@
     <string name="no_detected_connections_found">Ninguna conexión detectada aún</string>
     <string name="this_is_known_device">Este es un dispositivo conocido</string>
     <string name="you_identified_with_name">Identificaste este dispositivo como \"%1$s\"</string>
+    <string name="not_search_finished_yet">NINGUNA BÚSQUEDA FINALIZADA AÚN \n\n PULSE EL BOTÓN MÁS ABAJO PARA COMENZAR</string>
     
     <!-- Labels -->
     <string name="close_button">Cerrar</string>

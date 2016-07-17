@@ -43,7 +43,8 @@
     <string name="no_detected_connections_found">No connections found yet</string>
     <string name="this_is_known_device">This is a known device</string>
     <string name="you_identified_with_name">You identified this device as \"%1$s\"</string>
-    
+    <string name="not_search_finished_yet">NO SEARCH FINISHED YET \n\n PLEASE TAP BELOW BUTTON TO START A NEW SEARCH</string>
+
     <!-- Labels -->
     <string name="close_button">Close</string>
     <string name="connected">connected</string>
