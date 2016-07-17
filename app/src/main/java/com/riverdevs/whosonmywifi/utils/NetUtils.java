@@ -309,11 +309,11 @@ public class NetUtils extends BaseNetUtils{
 		}
 	}
 	
-	/**
+	/*
 	 * Retrieves the net.hostname system property
 	 * @param defValue the value to be returned if the hostname could
-	 * not be resolved
-	 */
+	 * not be resolved*/
+
 	public static String getMyHostName(String defValue) {
 	    try {
 	        Method getString = Build.class.getDeclaredMethod("getString", String.class);

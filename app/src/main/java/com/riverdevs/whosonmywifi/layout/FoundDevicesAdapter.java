@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,8 +43,8 @@ public class FoundDevicesAdapter extends ArrayAdapter<PingResult>{
 
         if(convertView == null){
         	convertView = mInflater.inflate(R.layout.found_device_list_item, null);
-        }	
-            
+        }
+
         TextView identifierTextView = (TextView) convertView.findViewById(R.id.identifierTextView);
         TextView hostnameTextView = (TextView) convertView.findViewById(R.id.hostnameTextView);
         TextView macTextView = (TextView) convertView.findViewById(R.id.macTextView);
@@ -70,13 +71,41 @@ public class FoundDevicesAdapter extends ArrayAdapter<PingResult>{
         				getContext().getString(R.string.unknown) :
         				pingResult.getManufacturer()) 
         		);
-        
-        if(pingResult.isNotCurrentlyConnected()){
-            connectedDeviceImage.setImageResource(R.drawable.disconnected);	
-        }
-        else{
-        	connectedDeviceImage.setImageResource(R.drawable.connected);
-        }
+
+		int backgroundColor;
+		int textColor;
+		int imageResource;
+
+		// Make visual difference between even and odd items
+		if(position % 2 == 0){
+			backgroundColor = getContext().getResources().getColor(R.color.white);
+			textColor = getContext().getResources().getColor(R.color.main_color);
+
+			if(pingResult.isNotCurrentlyConnected()){
+				imageResource = R.drawable.disconnected;
+			}
+			else{
+				imageResource = R.drawable.connected;
+			}
+		}
+		else{
+			backgroundColor = getContext().getResources().getColor(R.color.main_color);
+			textColor = getContext().getResources().getColor(R.color.white);
+
+			if(pingResult.isNotCurrentlyConnected()){
+				imageResource = R.drawable.disconnected;
+			}
+			else{
+				imageResource = R.drawable.connected_white;
+			}
+		}
+
+		convertView.setBackgroundColor(backgroundColor);
+		identifierTextView.setTextColor(textColor);
+		hostnameTextView.setTextColor(textColor);
+		macTextView.setTextColor(textColor);
+		manufacturerTextView.setTextColor(textColor);
+		connectedDeviceImage.setImageResource(imageResource);
 
         return convertView;
     }

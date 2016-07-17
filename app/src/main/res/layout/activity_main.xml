@@ -145,11 +145,19 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/quite_dark_text_color"
+            android:layout_weight="1"
             android:text="NO SEARCH FINISHED YET \n\n PLEASE TAP BELOW BUTTON TO START A NEW SEARCH"/>
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/downwards_arrow_key" />
 
     </LinearLayout>
 

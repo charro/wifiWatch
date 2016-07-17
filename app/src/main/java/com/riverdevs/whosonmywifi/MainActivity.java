@@ -48,6 +48,7 @@ import com.riverdevs.whosonmywifi.beans.PingResult;
 import com.riverdevs.whosonmywifi.beans.WifiConnectionInfo;
 import com.riverdevs.whosonmywifi.dao.DataManager;
 import com.riverdevs.whosonmywifi.layout.FoundDevicesAdapter;
+import com.riverdevs.whosonmywifi.utils.BaseNetUtils;
 import com.riverdevs.whosonmywifi.utils.NetUtils;
 import com.riverdevs.whosonmywifi.utils.SimpleEula;
 import com.riverdevs.whosonmywifi.utils.Utils;
@@ -207,30 +208,39 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (NetUtils.isWifiConnected(MainActivity.this)) {
-					progressBar.setProgress(0);
-					findViewById(R.id.searchResultLayout).setVisibility(View.VISIBLE);
-					//findViewById(R.id.startSearchContainerLayout).setVisibility(View.GONE);
-					findViewById(R.id.refreshResultsView).setVisibility(View.GONE);
-					findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);
-                    findViewById(R.id.instructionsContainerLayout).setVisibility(View.GONE);
-					
-					setConnectedDevicesAdapter(new FoundDevicesAdapter(MainActivity.this));
-					connectedDeviceList.setAdapter(getConnectedDevicesAdapter());
-					
-					// Start pinging all
-					pingTask = 
-							(PingTask) (new PingTask(MainActivity.this)).execute(searchNotConnected.isChecked());
-					
-					ImageView cancelSearchButton = (ImageView) findViewById(R.id.cancelSearchImage);
-					cancelSearchButton.setOnClickListener(new View.OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							cancelSearch();
+
+					// If there is a search ongoing, cancel it now
+					if(pingTask != null &&
+							pingTask.getStatus() == Status.RUNNING){
+						cancelSearch();
+						endSearch(true);
+					}
+					else {
+						progressBar.setProgress(0);
+						findViewById(R.id.searchResultLayout).setVisibility(View.VISIBLE);
+						//findViewById(R.id.startSearchContainerLayout).setVisibility(View.GONE);
+						findViewById(R.id.refreshResultsView).setVisibility(View.GONE);
+						findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);
+						findViewById(R.id.instructionsContainerLayout).setVisibility(View.GONE);
+
+						setConnectedDevicesAdapter(new FoundDevicesAdapter(MainActivity.this));
+						connectedDeviceList.setAdapter(getConnectedDevicesAdapter());
+
+						// Start pinging all
+						pingTask =
+								(PingTask) (new PingTask(MainActivity.this)).execute(searchNotConnected.isChecked());
+
+						ImageView cancelSearchButton = (ImageView) findViewById(R.id.cancelSearchImage);
+						cancelSearchButton.setOnClickListener(new View.OnClickListener() {
+
+							@Override
+							public void onClick(View v) {
+								cancelSearch();
 //							endSearch(null);
-							endSearch(true);
-						}
-					});
+								endSearch(true);
+							}
+						});
+					}
 				}
 				else{
 					Utils.createErrorDialog(MainActivity.this, "", 
@@ -241,28 +251,33 @@ public class MainActivity extends Activity {
 		});
 		
 		handler = new ConnectionHandler(this);
-		
-		// Register the Wifi connection receiver to check Wifi connections/disconnections
-		IntentFilter filter = new IntentFilter();
-		filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
 
-		connectionReceiver = new BroadcastReceiver() {
-		    @Override
-		    public void onReceive(Context context, Intent intent) {     
-		        ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE); 
-		        NetworkInfo netInfo = conMan.getActiveNetworkInfo();
-		        if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI){ 
-		            // Wifi connected again
-					(new GetMyWifiInfoTask()).execute();
-		        }
-		        else{
-		            // Wifi disconnected
-		            cleanMyData();
-		        }    
-		    }
-		};
-		
-		registerReceiver(connectionReceiver, filter);
+		// If we're in real device, register the Wifi connection receiver to check Wifi connections/disconnections
+		if(!Utils.isEmulator()){
+			IntentFilter filter = new IntentFilter();
+			filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+
+			connectionReceiver = new BroadcastReceiver() {
+				@Override
+				public void onReceive(Context context, Intent intent) {
+					ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+					NetworkInfo netInfo = conMan.getActiveNetworkInfo();
+					if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI){
+						// Wifi connected again
+						(new GetMyWifiInfoTask()).execute();
+					}
+					else{
+						// Wifi disconnected
+						cleanMyData();
+					}
+				}
+			};
+
+			registerReceiver(connectionReceiver, filter);
+		}
+		else{
+			myConnectionInfo = BaseNetUtils.getMyWifiInfo(this);
+		}
 
 		// Check if installation done. Proceed with installation otherwise
 //		if(getPreferences().getBoolean(SettingsActivity.KEY_PREF_INSTALLATION_DONE, false) == false){
@@ -291,6 +306,7 @@ public class MainActivity extends Activity {
 			// Set saved search data from last Activity
 			if(info.getListAdapter() != null){
 				findViewById(R.id.searchResultLayout).setVisibility(View.VISIBLE);
+				findViewById(R.id.instructionsContainerLayout).setVisibility(View.GONE);
 				//findViewById(R.id.startSearchContainerLayout).setVisibility(View.GONE);
 				
 				setConnectedDevicesAdapter(info.getListAdapter());
@@ -306,7 +322,7 @@ public class MainActivity extends Activity {
 					
 					if(info.getExecutingPingTask().getStatus() == Status.RUNNING){
 						findViewById(R.id.refreshResultsView).setVisibility(View.GONE);
-						findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);	
+						findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);
 					}
 					else{
 						//findViewById(R.id.refreshResultsView).setVisibility(View.VISIBLE);
