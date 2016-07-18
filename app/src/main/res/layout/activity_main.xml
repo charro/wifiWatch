@@ -137,26 +137,27 @@
     <LinearLayout
         android:id="@+id/instructionsContainerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_margin="10dp"
-        android:layout_weight="0.5"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@color/quite_dark_text_color"
-            android:layout_weight="1"
             android:text="@string/not_search_finished_yet"/>
 
         <ImageView
             android:id="@+id/arrowDown"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
+            android:gravity="center"
             android:src="@drawable/downwards_arrow_key" />
 
     </LinearLayout>
@@ -165,9 +166,9 @@
     <LinearLayout
         android:id="@+id/searchContainerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="10dp"
-        android:layout_weight="0.5"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone">

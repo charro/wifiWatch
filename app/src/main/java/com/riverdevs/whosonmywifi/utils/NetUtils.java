@@ -80,7 +80,7 @@ public class NetUtils extends BaseNetUtils{
 					}
 				}
 				break;
-			
+
 //			case Lookup.TYPE_NOT_FOUND:
 //				return getNetBiosName(ipAddress);
 //				String netBiosName = getNetBiosName(ipAddress);
@@ -93,9 +93,9 @@ public class NetUtils extends BaseNetUtils{
 			
 			// If wasn't found by reverse DNS, use Netbios name
 			default:
-				return getNetBiosName(ipAddress);			
+				return getNetBiosName(ipAddress);
 		}
-		
+
 		return null;
 	}
 

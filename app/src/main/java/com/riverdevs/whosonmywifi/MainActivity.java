@@ -169,14 +169,14 @@ public class MainActivity extends Activity {
 		gatewayTextView = (TextView) findViewById(R.id.gatewayIPTextView);
 		myMACTextView = (TextView) findViewById(R.id.myMACTextView);
 		
-		fadeInAnimation = AnimationUtils.loadAnimation(this, R.animator.fade_in);
+		fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
 		
-		fadeInFadeOutInfiniteLoopAnimation = AnimationUtils.loadAnimation(this, R.animator.fade_in_fade_out);
+		fadeInFadeOutInfiniteLoopAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in_fade_out);
 		fadeInFadeOutInfiniteLoopAnimation.setRepeatCount(-1);
 		fadeInFadeOutInfiniteLoopAnimation.setRepeatMode(2);
 
 		ImageView downArrowImageView = (ImageView) findViewById(R.id.arrowDown);
-		Animation upDownAnimation = AnimationUtils.loadAnimation(this, R.animator.down_up_down);
+		Animation upDownAnimation = AnimationUtils.loadAnimation(this, R.anim.down_up_down);
 		downArrowImageView.startAnimation(upDownAnimation);
 
 		connectedDeviceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -480,7 +480,8 @@ public class MainActivity extends Activity {
 	private void cancelSearch(){
 		if(pingTask != null && 
 				pingTask.getStatus() == Status.RUNNING){
-			pingTask.cancel(true);	
+			pingTask.cancel(true);
+			pingTask = null;
 		}
 	}
 	
