@@ -24,7 +24,7 @@
     <string name="loading_wifi_data">En chargement des données de la Wifi&#8230;</string>
     <string name="no_connected_to_wifi">Non connecté à une Wifi</string>
     <string name="start_search">COMMENCER</string>
-    <string name="show_not_connected">Montrer les dispositifs déconnectés</string>
+    <string name="show_not_connected">Montrer les dispositifs connectés précédemment</string>
     <string name="show_not_connected_explain">(Il montre les dispositifs qui étaient connectés au router récemment, mais non connectés actuellement)</string>
     <string name="scanning_lan">En scannant le réseau local&#8230;</string>
     <string name="clean_results">Eliminer les résultats</string>

@@ -141,127 +141,154 @@
 			ads:adSize="BANNER"
 			ads:adUnitId="ca-app-pub-7348866844562014/5306510085" />
 
-		<!-- INSTRUCTIONS WHEN SEARCH IS EMPTY -->
 		<LinearLayout
-			android:id="@+id/instructionsContainerLayout"
+			android:id="@+id/mainLayout"
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
-			android:layout_margin="10dp"
 			android:layout_weight="1"
-			android:gravity="center"
 			android:orientation="vertical">
 
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="0dp"
-				android:gravity="center"
-				android:textStyle="bold"
-				android:textColor="@color/quite_dark_text_color"
-				android:layout_weight="1"
-				android:text="@string/not_search_finished_yet"/>
-
-			<ImageView
-				android:id="@+id/arrowDown"
-				android:layout_width="wrap_content"
-				android:layout_height="0dp"
-				android:layout_weight="1"
-				android:gravity="center"
-				android:src="@drawable/downwards_arrow_key" />
-
-		</LinearLayout>
-
-		<!-- SEARCH CONTAINER -->
-		<LinearLayout
-			android:id="@+id/searchContainerLayout"
-			android:layout_width="match_parent"
-			android:layout_height="0dp"
-			android:layout_margin="10dp"
-			android:layout_weight="1"
-			android:gravity="center"
-			android:orientation="vertical"
-			android:visibility="gone">
-
-			<!-- RESULTS INSIDE THIS LAYOUT -->
-
+			<!-- INSTRUCTIONS WHEN SEARCH IS EMPTY -->
 			<LinearLayout
-				android:id="@+id/searchResultLayout"
+				android:id="@+id/instructionsContainerLayout"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
+				android:layout_margin="10dp"
 				android:gravity="center"
 				android:orientation="vertical">
 
-				<LinearLayout
-					android:id="@+id/searchProgressContainerLayout"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginBottom="5dp"
-					android:layout_marginLeft="10dp"
-					android:layout_marginRight="10dp"
-					android:layout_marginTop="5dp"
-					android:visibility="gone">
-
-					<LinearLayout
-						android:layout_width="fill_parent"
-						android:layout_height="wrap_content"
-						android:layout_weight="0.9"
-						android:orientation="vertical" >
-
-						<TextView
-							android:id="@+id/searchingTextView"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center"
-							android:textColor="@color/main_dark_text_color"
-							android:textStyle="bold"
-							android:text="@string/scanning_lan" />
-
-						<ProgressBar
-							android:id="@+id/lookUpProgressBar"
-							style="?android:attr/progressBarStyleHorizontal"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content" />
-					</LinearLayout>
-
-					<ImageView
-						android:id="@+id/cancelSearchImage"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_gravity="center_horizontal|bottom"
-						android:background="@drawable/transparent_background_clickable"
-						android:clickable="true"
-						android:src="@drawable/red_cancel"
-						android:visibility="gone"/>
-				</LinearLayout>
-
-				<TextView
-					android:id="@+id/refreshResultsView"
+				<CheckBox
+					android:id="@+id/searchNotConnectedCheckBox"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:background="@drawable/blue_background_clickable"
-					android:clickable="true"
-					android:drawableLeft="@drawable/clean"
-					android:drawablePadding="10dp"
-					android:padding="10dp"
-					android:text="@string/clean_results"
-					android:visibility="gone" />
+					android:layout_weight="0.1"
+					android:text="@string/show_not_connected" />
 
-				<View
-					android:id="@+id/busyBar"
-					android:layout_width="fill_parent"
-					android:layout_height="7dp"
-					android:visibility="gone"
-					android:layout_margin="7dp"
-					android:background="@drawable/gradient_bilinear"/>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:textStyle="bold"
+					android:textColor="@color/quite_dark_text_color"
+					android:text="@string/not_search_finished_yet"/>
 
-				<ListView
-					android:id="@+id/connectedDeviceList"
-					android:layout_width="fill_parent"
-					android:layout_height="fill_parent" />
+				<ImageView
+					android:id="@+id/arrowDown"
+					android:layout_width="wrap_content"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:src="@drawable/downwards_arrow_key" />
+
+			</LinearLayout>
+
+			<!-- SEARCH CONTAINER -->
+			<LinearLayout
+				android:id="@+id/searchContainerLayout"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_margin="10dp"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="vertical"
+				android:visibility="gone">
+
+				<!-- RESULTS INSIDE THIS LAYOUT -->
+
+				<LinearLayout
+					android:id="@+id/searchResultLayout"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:gravity="center"
+					android:orientation="vertical">
+
+					<LinearLayout
+						android:id="@+id/searchProgressContainerLayout"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginBottom="5dp"
+						android:layout_marginLeft="10dp"
+						android:layout_marginRight="10dp"
+						android:layout_marginTop="5dp"
+						android:visibility="gone">
+
+						<LinearLayout
+							android:layout_width="fill_parent"
+							android:layout_height="wrap_content"
+							android:layout_weight="0.9"
+							android:orientation="vertical" >
+
+							<TextView
+								android:id="@+id/searchingTextView"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_gravity="center"
+								android:textColor="@color/main_dark_text_color"
+								android:textStyle="bold"
+								android:text="@string/scanning_lan" />
+
+							<ProgressBar
+								android:id="@+id/lookUpProgressBar"
+								style="?android:attr/progressBarStyleHorizontal"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content" />
+						</LinearLayout>
+
+						<ImageView
+							android:id="@+id/cancelSearchImage"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_horizontal|bottom"
+							android:background="@drawable/transparent_background_clickable"
+							android:clickable="true"
+							android:src="@drawable/red_cancel"
+							android:visibility="gone"/>
+					</LinearLayout>
+
+					<TextView
+						android:id="@+id/refreshResultsView"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/blue_background_clickable"
+						android:clickable="true"
+						android:drawableLeft="@drawable/clean"
+						android:drawablePadding="10dp"
+						android:padding="10dp"
+						android:text="@string/clean_results"
+						android:visibility="gone" />
+
+					<View
+						android:id="@+id/busyBar"
+						android:layout_width="fill_parent"
+						android:layout_height="7dp"
+						android:visibility="gone"
+						android:layout_margin="7dp"
+						android:background="@drawable/gradient_bilinear"/>
+
+					<ListView
+						android:id="@+id/connectedDeviceList"
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent" />
+				</LinearLayout>
+
 			</LinearLayout>
 
 		</LinearLayout>
+		<!-- android:drawableTop="@drawable/refresh" -->
+		<Button
+			android:id="@+id/startSearchButton"
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:clickable="true"
+			android:gravity="center"
+			android:background="@color/darkest_color"
+			android:textStyle="bold"
+			android:textColor="@color/main_text_color"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:text="@string/start_search" />
 
-		<!-- USER INTERFACE - BUTTONS HERE-->
+		<!-- USER INTERFACE - BUTTONS HERE
 		<LinearLayout
 			android:id="@+id/startSearchContainerLayout"
 			android:layout_width="match_parent"
@@ -269,19 +296,6 @@
 			android:layout_margin="10dp"
 			android:gravity="center"
 			android:orientation="vertical">
-
-			<!-- android:drawableTop="@drawable/refresh" -->
-			<Button
-				android:id="@+id/startSearchButton"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:clickable="true"
-				android:gravity="center"
-				android:background="@color/darkest_color"
-				android:textStyle="bold"
-				android:textColor="@color/main_text_color"
-				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:text="@string/start_search" />
 
 			<CheckBox
 				android:id="@+id/searchNotConnectedCheckBox"
@@ -300,6 +314,8 @@
 				android:textSize="12sp"
 				android:visibility="gone"/>
 		</LinearLayout>
+		            -->
+
 	</LinearLayout>
-            
+
 </LinearLayout>

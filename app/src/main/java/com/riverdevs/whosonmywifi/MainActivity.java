@@ -463,7 +463,8 @@ public class MainActivity extends Activity {
 		
 		// Check if the app is really closing or we are just doing a change in its config
 		if(!weAreChangingOfScreenOrientation){
-			stopMonitorService();	
+			stopMonitorService();
+			connectedDevicesAdapter = null;
 		}
 		unregisterReceiver(connectionReceiver);
 		DataManager.closeConnection();
@@ -489,7 +490,7 @@ public class MainActivity extends Activity {
 		pingTask = null;
 		connectedDevicesAdapter = null;
 		addressesLooked = 0;
-		findViewById(R.id.startSearchContainerLayout).setVisibility(View.VISIBLE);		
+		//findViewById(R.id.startSearchContainerLayout).setVisibility(View.VISIBLE);
 		findViewById(R.id.searchResultLayout).setVisibility(View.GONE);
 		findViewById(R.id.refreshResultsView).setVisibility(View.GONE);
 	}
@@ -574,10 +575,10 @@ public class MainActivity extends Activity {
 		
 		stopMonitorService();
 		
-		View searchContainer = 
+		/* View searchContainer =
 				findViewById(R.id.startSearchContainerLayout);
 		searchContainer.setVisibility(View.VISIBLE);
-		searchContainer.startAnimation(fadeInAnimation);
+		searchContainer.startAnimation(fadeInAnimation); */
 		findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);
 		
 		findViewById(R.id.searchResultLayout).setVisibility(View.GONE);
@@ -615,7 +616,7 @@ public class MainActivity extends Activity {
 					result.setNotCurrentlyConnected(true);
 					getConnectedDevicesAdapter().add(result);
 					getConnectedDevicesAdapter().notifyDataSetChanged();	
-				}			
+				}
 			}
 			else{
 				getConnectedDevicesAdapter().add(result);
