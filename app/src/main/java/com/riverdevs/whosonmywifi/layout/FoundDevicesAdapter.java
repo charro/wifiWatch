@@ -109,5 +109,23 @@ public class FoundDevicesAdapter extends ArrayAdapter<PingResult>{
 
         return convertView;
     }
-    
+
+    /**
+	 * Looks for this item in list and substitute it if found
+	 */
+	public void substitute(PingResult newPing){
+		for(int i=0; i<itemsList.size(); i++){
+			PingResult old = itemsList.get(i);
+			if(old.equals(newPing)){
+				itemsList.set(i, newPing);
+				break;
+			}
+		}
+	}
+
+	public void clearContents(){
+		itemsList.clear();
+		clear();
+		notifyDataSetChanged();
+	}
 }

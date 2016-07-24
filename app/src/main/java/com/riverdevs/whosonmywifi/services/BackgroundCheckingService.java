@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
 
+// FIXME: DELETE THIS CLASS, IS NOT USED !!
+
 public class BackgroundCheckingService extends IntentService {
 
 	public BackgroundCheckingService(String name) {

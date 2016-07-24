@@ -1,5 +1,7 @@
 package com.riverdevs.whosonmywifi;
 
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -80,6 +82,7 @@ public class MainActivity extends Activity {
 //	private ProgressDialog installDialog;
 	
 	private PingTask pingTask = null;
+	private CompleteDeviceDataTask completeDataTask = null;
 	
 //	private Scan scanner;
 	
@@ -211,6 +214,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				stopCompleteDataTask();
 				stopMonitorService();
 
 				if (NetUtils.isWifiConnected(MainActivity.this)) {
@@ -229,8 +233,11 @@ public class MainActivity extends Activity {
 						findViewById(R.id.searchProgressContainerLayout).setVisibility(View.VISIBLE);
 						findViewById(R.id.instructionsContainerLayout).setVisibility(View.GONE);
 
-						setConnectedDevicesAdapter(new FoundDevicesAdapter(MainActivity.this));
-						connectedDeviceList.setAdapter(getConnectedDevicesAdapter());
+						if(getConnectedDevicesAdapter() == null){
+							setConnectedDevicesAdapter(new FoundDevicesAdapter(MainActivity.this));
+							connectedDeviceList.setAdapter(getConnectedDevicesAdapter());
+						}
+						getConnectedDevicesAdapter().clearContents();
 
 						// Start pinging all
 						pingTask =
@@ -342,15 +349,21 @@ public class MainActivity extends Activity {
 				
 			}
 			
-			if(info.getMonitorThread() != null){
+			//if(info.getMonitorThread() != null){
 				monitorThread = info.getMonitorThread();
-				if(monitorThread==null || monitorThread.stopFlag){
-					hideBusyBar();
-				}
-				else{
-					showBusyBar();
-				}
+			//}
+
+			//if(info.getCompleteDataTask() != null){
+				completeDataTask = info.getCompleteDataTask();
+
+			if((monitorThread!=null && monitorThread.isAlive()) ||
+					(completeDataTask!=null && completeDataTask.getStatus() == Status.RUNNING)){
+				showBusyBar();
 			}
+			else{
+				hideBusyBar();
+			}
+			//}
 		}
 
 	}
@@ -411,7 +424,7 @@ public class MainActivity extends Activity {
 	    
 		InfoToPassBetweenActivities info = 
 				new InfoToPassBetweenActivities(pingTask, myConnectionInfo, 
-						addressesLooked, getConnectedDevicesAdapter(), monitorThread);
+						addressesLooked, getConnectedDevicesAdapter(), monitorThread, completeDataTask);
 		
 		return(info);
 	}
@@ -465,11 +478,19 @@ public class MainActivity extends Activity {
 		if(!weAreChangingOfScreenOrientation){
 			stopMonitorService();
 			connectedDevicesAdapter = null;
+			stopCompleteDataTask();
 		}
 		unregisterReceiver(connectionReceiver);
 		DataManager.closeConnection();
 	}
-	
+
+	private void stopCompleteDataTask(){
+		if(completeDataTask != null){
+			completeDataTask.cancel(true);
+			completeDataTask = null;
+		}
+	}
+
 	private void stopMonitorService(){
 		hideBusyBar();
 		
@@ -634,13 +655,22 @@ public class MainActivity extends Activity {
 		progressBar.setProgress(100);
 		findViewById(R.id.searchProgressContainerLayout).setVisibility(View.GONE);
 		//findViewById(R.id.refreshResultsView).setVisibility(View.VISIBLE);
-		
+
+		/*
 		if(!cancelled){
 			// Start automatic monitoring of devices
 			startMonitorService();	
-		}
+		}*/
 
 		startSearch.setText(getResources().getText(R.string.start_search));
+
+		// Complete the found devices data
+		if(!cancelled){
+			stopCompleteDataTask();
+			completeDataTask = new CompleteDeviceDataTask();
+			completeDataTask.execute(!cancelled);
+		}
+
 	}
 	
 	@Override
@@ -676,7 +706,53 @@ public class MainActivity extends Activity {
 			updateMyData(result);
 		}
 	}
-	
+
+	public class CompleteDeviceDataTask extends AsyncTask<Boolean, Void, Void> {
+
+		private boolean startMonitorWhenDone = false;
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			Toast.makeText(MainActivity.this, "Completing found devices data... (Hostname, Manufacturer...)", Toast.LENGTH_SHORT).show();
+			showBusyBar();
+		}
+
+		@Override
+		protected Void doInBackground(Boolean... params) {
+			startMonitorWhenDone = params[0];
+
+			List<PingResult> foundDevices = getConnectedDevicesAdapter().getItemsList();
+			for(PingResult device : foundDevices){
+				try{
+					if(!device.getIp().equals(NetUtils.getMyWifiInfo(MainActivity.this).getMyIp())){
+						NetUtils.completeData(device, getMyConnectionInfo().getGatewayIp(), true);
+						getConnectedDevicesAdapter().notifyDataSetChanged();
+					}
+				}
+				catch(UnknownHostException uh) {
+					// Nothing to do, hostname just not found for this IP
+				}
+				catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			Toast.makeText(MainActivity.this, "Devices data completed", Toast.LENGTH_SHORT).show();
+			if(startMonitorWhenDone && getPreferences().getBoolean(SettingsActivity.KEY_PREF_AUTO_CONNECTION_CHECKING, false)){
+				startMonitorService();
+			}
+			else{
+				hideBusyBar();
+			}
+		}
+	}
+
 //	private class InstallTask extends AsyncTask<Void, Boolean, Boolean> {
 //		
 //		@Override

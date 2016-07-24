@@ -91,7 +91,8 @@ public class PingResult {
 	@Override
 	public boolean equals(Object o) {
 		if(o instanceof PingResult){
-			return ip.equals(((PingResult)o).getIp());	
+			return macAddress.equals(((PingResult)o).getMacAddress()) ||
+					ip.equals(((PingResult)o).getIp());
 		}
 		else{
 			return false;

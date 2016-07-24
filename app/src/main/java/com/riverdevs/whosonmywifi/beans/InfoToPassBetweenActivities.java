@@ -1,5 +1,6 @@
 package com.riverdevs.whosonmywifi.beans;
 
+import com.riverdevs.whosonmywifi.MainActivity;
 import com.riverdevs.whosonmywifi.MonitorConnectionThread;
 import com.riverdevs.whosonmywifi.PingTask;
 import com.riverdevs.whosonmywifi.layout.FoundDevicesAdapter;
@@ -12,14 +13,17 @@ public class InfoToPassBetweenActivities {
 	private int addressesLooked;
 	private FoundDevicesAdapter listAdapter;
 	private MonitorConnectionThread monitorThread;
+	private MainActivity.CompleteDeviceDataTask completeDataTask;
 	
-	public InfoToPassBetweenActivities(PingTask task, WifiConnectionInfo wifiInfo, 
-			int addressesLooked, FoundDevicesAdapter listAdapter, MonitorConnectionThread monitorThread) {
+	public InfoToPassBetweenActivities(PingTask task, WifiConnectionInfo wifiInfo,
+									   int addressesLooked, FoundDevicesAdapter listAdapter, MonitorConnectionThread monitorThread,
+									   MainActivity.CompleteDeviceDataTask completeDataTask) {
 		this.executingPingTask = task;
 		this.wifiConnectionInfo = wifiInfo;
 		this.addressesLooked = addressesLooked;
 		this.listAdapter = listAdapter;
 		this.monitorThread = monitorThread;
+		this.completeDataTask = completeDataTask;
 	}
 
 	public PingTask getExecutingPingTask(){
@@ -44,6 +48,14 @@ public class InfoToPassBetweenActivities {
 
 	public void setMonitorThread(MonitorConnectionThread monitorThread) {
 		this.monitorThread = monitorThread;
+	}
+
+	public MainActivity.CompleteDeviceDataTask getCompleteDataTask(){
+		return completeDataTask;
+	}
+
+	public void getCompleteDataTask(MainActivity.CompleteDeviceDataTask completeDataTask){
+		this.completeDataTask = completeDataTask;
 	}
 
 	@Override

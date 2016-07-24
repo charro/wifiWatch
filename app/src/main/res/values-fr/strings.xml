@@ -13,7 +13,7 @@
     <string name="pref_timeout_to_ping_summary">Plus long sera le temps d\'attente, plus lente sera la recherche, mais aussi plus fiable.\n\nTemps d\'attente actuel: %1$s</string>
     <string name="pref_time_between_checking_title">Temps d\'attente entre les auto-vérifications</string>
     <string name="pref_auto_connection_check_title">Auto-vérifier les dispositifs connectés</string>
-    <string name="pref_auto_connection_check_summary">Après la recherche, vérifier automatiquement la connexion des dispositifs détectés</string>
+    <string name="pref_auto_connection_check_summary">Après la recherche, vérifier automatiquement la connexion des dispositifs détectés et recherche pour plus de dispositifs</string>
     <string name="pref_show_notifications_check_title">Afficher les notifications</string>
 	<string name="pref_show_notifications_check_summary">Afficher les notifications dans la zone de notification lorsque nouvelle connexion détectée après une recherche</string>
 

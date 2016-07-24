@@ -70,8 +70,10 @@ public class PingTask extends AsyncTask<Boolean, PingResult, Void> {
 //					response.setSuccess(true);
 //				}
 
+
 				// Test NetBios
 				NetBiosResult netBiosResult = NetBiosCheck.sendToHost(checkedIp);
+								/*
 //				response.setHostname(netBiosResult.getNetBiosName());
 //				if(response.isSuccess()==false){
 //					response.setSuccess(netBiosResult.isSuccess());
@@ -84,14 +86,15 @@ public class PingTask extends AsyncTask<Boolean, PingResult, Void> {
 							MainActivity.getConnectedDevicesAdapter().notifyDataSetChanged();
 						}
 					}
-				}
+				}*/
+
 				checkArp();
 				for(String foundIp : foundInArp){
 					if(!foundIpList.contains(foundIp)){
 						foundIpList.add(foundIp);
 						PingResult arpResult = new PingResult(true);
 						arpResult.setIp(foundIp);
-						NetUtils.completeData(arpResult, 
+						NetUtils.completeDataQuick(arpResult,
 								myConnectionInfo.getGatewayIp(), params[0]);
 						publishProgress(arpResult);
 					}
@@ -116,7 +119,7 @@ public class PingTask extends AsyncTask<Boolean, PingResult, Void> {
 
 				// Show not connected
 				if(params[0] && !response.isSuccess()){
-					NetUtils.completeData(response, 
+					NetUtils.completeDataQuick(response,
 							myConnectionInfo.getGatewayIp(), params[0]);
 					if(!TextUtils.isEmpty(response.getHostname()) &&
 						!foundIpList.contains(response.getIp()) ){

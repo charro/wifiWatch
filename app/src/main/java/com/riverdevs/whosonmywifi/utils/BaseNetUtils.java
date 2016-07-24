@@ -70,6 +70,17 @@ public class BaseNetUtils {
 		
 		return pingResult;
 	}
+
+	public static PingResult completeDataQuick(PingResult pingResult, String gateway, boolean getDisconnected) throws Exception{
+		if(pingResult.isSuccess() || getDisconnected){
+			pingResult.setHostname(reverseDns(pingResult.getIp(), gateway));
+			pingResult.setMacAddress(getMacAddress(pingResult.getIp()));
+			// Find Manufacturer name
+			pingResult.setManufacturer(getManufacturerNameFromMAC(pingResult.getMacAddress()));
+		}
+
+		return pingResult;
+	}
 	
 	public static WifiConnectionInfo getMyWifiInfo(Context context) {
 		WifiConnectionInfo connectionInfo = new WifiConnectionInfo();
@@ -87,7 +98,8 @@ public class BaseNetUtils {
 	public static boolean ping(String url){
 		if(url.equals("192.168.1.1") ||
 		   url.equals("192.168.1.11") ||
-		   url.equals("192.168.1.17")){
+		   url.equals("192.168.1.17") ||
+				url.equals("192.168.1.12")){
 			return true;
 		}
 		
@@ -105,7 +117,7 @@ public class BaseNetUtils {
 			return "XX:XX:XX:XX:XX:CC";
 		}
 				
-		return null;
+		return "AA:BB:CC:DD:EE:FF";
 	}
 	
 	public static int getTimeoutTime(){

@@ -133,7 +133,20 @@ public class NetUtils extends BaseNetUtils{
 		
 		return pingResult;
 	}
-	
+
+	public static PingResult completeDataQuick(PingResult pingResult, String gateway, boolean getDisconnected) throws Exception{
+		if(pingResult.isSuccess() || getDisconnected){
+			/*if(TextUtils.isEmpty(pingResult.getHostname())){
+				pingResult.setHostname(NetUtils.findHostName(pingResult.getIp(), gateway));
+			}*/
+			pingResult.setMacAddress(getMacAddress(pingResult.getIp()));
+			pingResult.setManufacturer(getManufacturerNameFromMAC(pingResult.getMacAddress(), false));
+			pingResult.setGivenName(DataManager.getGivenNameFromMAC(pingResult.getMacAddress()));
+		}
+
+		return pingResult;
+	}
+
 	public static WifiConnectionInfo getMyWifiInfo(Context context) {
 		WifiManager wifiManager = (WifiManager) context
 				.getSystemService(Context.WIFI_SERVICE);
@@ -217,8 +230,12 @@ public class NetUtils extends BaseNetUtils{
 		
 		return macAddress;
 	}
-	
+
 	public static String getManufacturerNameFromMAC(String mac){
+		return getManufacturerNameFromMAC(mac, true);
+	}
+
+	public static String getManufacturerNameFromMAC(String mac, boolean lookOnline){
 		String manufacturer = null;
 
 		try{
@@ -239,7 +256,7 @@ public class NetUtils extends BaseNetUtils{
 					}
 					
 					// Not found, check on Online service
-					if(manufacturer == null){
+					if(manufacturer == null && lookOnline){
 						final HttpParams httpParams = new BasicHttpParams();
 					    HttpConnectionParams.setConnectionTimeout(httpParams, 3000);
 						HttpClient httpclient = new DefaultHttpClient(httpParams);
@@ -309,7 +326,7 @@ public class NetUtils extends BaseNetUtils{
 		}
 	}
 	
-	/*
+	/**
 	 * Retrieves the net.hostname system property
 	 * @param defValue the value to be returned if the hostname could
 	 * not be resolved*/

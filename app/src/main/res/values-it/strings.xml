@@ -13,7 +13,7 @@
     <string name="pref_timeout_to_ping_summary">Maggiore é l\'intervallo, maggior precisione avrá il tisultato della ricerca (ma sará anche piú lento).\n\nAttualmente: %1$s</string>
     <string name="pref_time_between_checking_title">Limite di tempo fra i controlli automatici</string>
     <string name="pref_auto_connection_check_title">Controllo automatico connessione</string>
-    <string name="pref_auto_connection_check_summary">Dopo una ricerca, attualizzare periodicamente lo stato della connessione dei dispositivi incontrati</string>
+    <string name="pref_auto_connection_check_summary">Dopo una ricerca, attualizzare periodicamente lo stato della connessione dei dispositivi incontrati e ricercare più dispositivi</string>
     <string name="pref_show_notifications_check_title">Mostra notifica</string>
 	<string name="pref_show_notifications_check_summary">Mostra notifica nell\'area di notifica quando nuova connessione rilevata dopo una ricerca</string>
     

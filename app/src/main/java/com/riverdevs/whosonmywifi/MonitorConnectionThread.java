@@ -143,7 +143,7 @@ public class MonitorConnectionThread extends Thread{
 						isNew = false;
 					}
 				}
-				
+
 				if(isNew){
 					PingResult newDeviceFound = new PingResult(true);
 					newDeviceFound.setIp(ip);
@@ -192,7 +192,7 @@ public class MonitorConnectionThread extends Thread{
 					}
 					
 //					resultList.add(newDeviceFound);
-					
+
 					Message newDeviceMessage = handler.obtainMessage(NEW_CONNECTION_DETECTED, newDeviceFound);
 					handler.sendMessage(newDeviceMessage);
 //					handler.sendMessage(handler.obtainMessage(NEW_CONNECTION_DETECTED));
