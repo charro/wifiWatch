@@ -261,7 +261,7 @@ public class NetUtils extends BaseNetUtils{
 					    HttpConnectionParams.setConnectionTimeout(httpParams, 3000);
 						HttpClient httpclient = new DefaultHttpClient(httpParams);
 						HttpGet request = 
-								new HttpGet("https://macmanufacturer.herokuapp.com/name/"+macIndex);
+								new HttpGet("https://macmanufacturernew.herokuapp.com/name/"+macIndex);
 
 						HttpResponse response = httpclient.execute(request);
 						BufferedReader in = new BufferedReader(new InputStreamReader(
